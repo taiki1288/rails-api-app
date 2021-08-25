@@ -1,6 +1,6 @@
 module Api 
     module V1 
-        class Postcontroller < Applicationcontroller
+        class PostsController < ApplicationController
             before_action :set_post, only: [:show, :update, :destroy]
 
             def index 
