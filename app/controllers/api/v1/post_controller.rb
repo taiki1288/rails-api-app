@@ -11,6 +11,17 @@ module Api
             def show 
                 render json: { status: 'SUCCESS', message: 'Loaded the post', data: @post }
             end
-        en
+
+
+            private
+
+            def set_post
+                @post = Post.find(params[:id])
+            end
+
+            def post_params
+                params.require(:post).permit(:title) 
+            end
+        end
     end
 end
