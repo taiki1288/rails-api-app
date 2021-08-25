@@ -13,19 +13,26 @@ module Api
             end
 
             def created
-                 post = Post.new(post_params)
-                 if post.save
+                post = Post.new(post_params)
+                if post.save
                     render json: { status: 'SUCCESS', data: post }
-                 else 
+                else 
                     render json: { status: 'ERROR', data: post.errors }
-                 end
+                end
+            end
+
+            def update
+                if @post.update(post_params)
+                    render json: { status: 'SUCCESS', message: 'Updated the post', data: @post }
+                else
+                    render json: { status: 'ERROR', message: 'Not updated', data: @post.errors }
+                end
             end
 
             def destroy
                 @post.destroy
                 render json: { status: 'SUCCESS', message: 'Deleted the post', data: @post }
-             end
-
+            end
 
             private
 
