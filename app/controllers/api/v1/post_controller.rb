@@ -12,6 +12,15 @@ module Api
                 render json: { status: 'SUCCESS', message: 'Loaded the post', data: @post }
             end
 
+            def created
+                 post = Post.new(post_params)
+                 if post.save
+                    render json: { status: 'SUCCESS', data: post }
+                 else 
+                    render json: { status: 'ERROR', data: post.errors }
+                 end
+            end
+
 
             private
 
