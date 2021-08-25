@@ -21,6 +21,11 @@ module Api
                  end
             end
 
+            def destroy
+                @post.destroy
+                render json: { status: 'SUCCESS', message: 'Deleted the post', data: @post }
+             end
+
 
             private
 
